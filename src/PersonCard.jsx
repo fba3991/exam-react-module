@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const PersonCard = ({
   id,
   name,
@@ -9,13 +11,14 @@ const PersonCard = ({
 }) => {
   return (
     <div>
-      <div key={id}>
+      <div className="person-card" key={id}>
         <h4> {name}</h4>
         <h4> {occupation}</h4>
         <h4> {sex}</h4>
         <h4> {popularity}</h4>
         <h4> {works}</h4>
         <img src={imagePath} alt="" />
+        <NavLink to={`/person/${id}`}> Details</NavLink>
       </div>
     </div>
   );
