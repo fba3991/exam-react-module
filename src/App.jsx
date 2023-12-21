@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
 import AboutPage from "./components/AboutPage";
-import HomePage from "./components/HomePAge";
+import HomePage from "./components/HomePage";
 import SearchPage from "./components/SearchPAge";
 import PersonPage from "./components/PersonPage";
 import "./App.scss";
