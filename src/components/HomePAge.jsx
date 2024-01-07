@@ -1,14 +1,16 @@
 
-import React, { useState, useEffect } from "react";
+import {  useState, useEffect } from "react";
 const apiKey = import.meta.env.VITE_API_KEY;
 import PersonCard from "../PersonCard";
+
 
 const HomePage = () => {
   const [popularPersons, setPopularPersons] = useState([]);
   const [error, setError] = useState(null);
 
+   
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}`)
+    fetch(`https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey} `)
       .then((respnse) => respnse.json())
       .then((obj) => setPopularPersons(obj.results))
       .catch((error) => {
@@ -20,6 +22,7 @@ const HomePage = () => {
   return (
     <div className="card-actor">
       <>
+     
         <h2>Popular Persons of the Day</h2>
         {error && <div>{error}</div>}
         {!error && popularPersons.length === 0 && <div>Loading...</div>}
@@ -40,8 +43,11 @@ const HomePage = () => {
             ))}
           </div>
         )}
+         
       </>
     </div>
+   
   );
 };
 export default HomePage;
+

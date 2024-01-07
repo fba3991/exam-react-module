@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import {  useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
+
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -32,18 +33,19 @@ const PersonPage = () => {
           <p>
             <strong>Sex:</strong> {person.gender === 2 ? "Male" : "Female"}
           </p>
-          {person.age && (
-            <p>
-              <strong>Age:</strong> {dayjs().diff(person.birthday, "year")}
-            </p>
-          )}
+          {person.birthday && (
+  <p>
+    <strong>Età:</strong> {dayjs().diff(dayjs(person.birthday), "year")}
+  </p>
+)}
+
           <p>
             <strong>Biography:</strong> {person.biography}
           </p>
           {person.profile_path && (
             <img
               src={`https://image.tmdb.org/t/p/w200${person.profile_path}`}
-              alt={person.name}
+              alt={`Profile picture ${person.name}`}
             />
           )}
         </div>

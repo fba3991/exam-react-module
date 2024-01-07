@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PersonCard = ({
   id,
@@ -9,19 +9,26 @@ const PersonCard = ({
   works,
   imagePath,
 }) => {
-  return (
-    <div>
-      <div className="person-card" key={id}>
-        <h4> {name}</h4>
-        <h4> {occupation}</h4>
-        <h4> {sex}</h4>
-        <h4> {popularity}</h4>
-        <h4> {works}</h4>
-        <img src={imagePath} alt="" />
-        <NavLink to={`/person/${id}`}> Details</NavLink>
-      </div>
-    </div>
-  );
+  return(
+    <Link className="person-card" to={`/person/${id}`}>
+        <div className="name">{name} ({sex})</div>
+        <figure>
+            <img src={imagePath} alt={name}/>
+        </figure>
+        <ul>
+            <li>Professione: {occupation}</li>
+            <li>Popolarità: {popularity}</li>
+        </ul>
+        {works.length !== 0 && <>
+            <div>Film su cui ha lavorato:</div>
+            <ol>
+                {works.map( (work, i) => (
+                    <li key={`work${i}`}>{work}</li>
+                ))}
+            </ol>
+        </>}
+    </Link>
+)
 };
 
 export default PersonCard;
